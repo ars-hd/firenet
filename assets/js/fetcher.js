@@ -83,3 +83,4 @@ const get_employees = () => {
         console.error(error);
     })
 }
+get_employees();
