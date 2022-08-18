@@ -1628,3 +1628,13 @@ section {
 #footer .footer-links a:hover {
   color: #3498db;
 }
+
+
+
+/* CUSTOM STYLING */
+#flashMessage {
+  padding: 20px;
+  margin: 1%;
+  color: #fff;
+  text-align: center;
+}
