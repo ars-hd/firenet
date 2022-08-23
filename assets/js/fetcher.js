@@ -37,7 +37,7 @@ const myFeedbackSubmitFunction = () => {
                 throw new Error("An Unexpected error occurred");
             }
             else {
-                flash_message("Successfully sent your feedback", "green");
+                flash_message("Successfully sent your feedback", "#467fd0");
                 console.log("Successfully sent your feedback");
             }
         }
