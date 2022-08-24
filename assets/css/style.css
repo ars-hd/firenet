@@ -1062,6 +1062,10 @@ section {
   .portfolio .portfolio-wrap .portfolio-info {
     opacity: 1;
   }
+  .portfolio .portfolio-wrap::before {
+    opacity: 1;
+  }
+}
 
 .portfolio .portfolio-wrap .portfolio-info h4 {
   font-size: 20px;
