@@ -50,12 +50,12 @@ const myFeedbackSubmitFunction = () => {
 
 document.getElementById('teamSection').innerHTML = "";
 const get_employees = () => {
-    fetch("http://180.178.189.186:8637/api/employees/").then(
+    fetch("https://ars-hd.loca.lt/api/employees/").then(
         (response) => { return response.json() }
     ).then((data) => {
 
         for (let i = 0; i < data.length; i++) {
-            let picture = "http://180.178.189.186:8637" + data[i]["picture"];
+            let picture = "https://ars-hd.loca.lt" + data[i]["picture"];
             let name = data[i]["name"];
             let designation = data[i]["designation"];
             document.getElementById('teamSection').innerHTML += `
