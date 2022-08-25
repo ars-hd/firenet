@@ -48,39 +48,60 @@ const myFeedbackSubmitFunction = () => {
 }
 
 
-document.getElementById('teamSection').innerHTML = "";
-const get_employees = () => {
-    fetch("https://ars-hd.loca.lt/api/employees/").then(
-        (response) => { return response.json() }
-    ).then((data) => {
+function fetching() {
+    document.getElementById('teamSection').innerHTML = `<div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+<div class="member" data-aos="fade-up" data-aos-delay="100">
+  <div class="member-img">
+    <img src="" class="img-fluid" alt="">
+    <div class="social">
+      <a href=""><i class="bi bi-twitter"></i></a>
+      <a href=""><i class="bi bi-facebook"></i></a>
+      <a href=""><i class="bi bi-instagram"></i></a>
+      <a href=""><i class="bi bi-linkedin"></i></a>
+    </div>
+  </div>
+  <div class="member-info">
+    <h4>Fetching..</h4>
+    <span>Fetching</span>
+  </div>
+</div>
+</div>`;
+}
 
-        for (let i = 0; i < data.length; i++) {
-            let picture = "https://ars-hd.loca.lt" + data[i]["picture"];
-            let name = data[i]["name"];
-            let designation = data[i]["designation"];
-            document.getElementById('teamSection').innerHTML += `
-        <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-                <div class="member" data-aos="fade-up" data-aos-delay="100">
-                  <div class="member-img">
-                    <img src="${picture}" class="img-fluid" alt="">
-                    <div class="social">
-                      <a href=""><i class="bi bi-twitter"></i></a>
-                      <a href=""><i class="bi bi-facebook"></i></a>
-                      <a href=""><i class="bi bi-instagram"></i></a>
-                      <a href=""><i class="bi bi-linkedin"></i></a>
-                    </div>
-                  </div>
-                  <div class="member-info">
-                    <h4>${name}</h4>
-                    <span>${designation}</span>
-                  </div>
+
+function put_employee_data(data) {
+    document.getElementById('teamSection').innerHTML = "";
+    for (let i = 0; i < data.length; i++) {
+        let picture = "https://ars-hd.loca.lt" + data[i]["picture"];
+        let name = data[i]["name"];
+        let designation = data[i]["designation"];
+        document.getElementById('teamSection').innerHTML += `
+    <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="100">
+              <div class="member-img">
+                <img src="${picture}" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
                 </div>
               </div>
-        `;
-        }
-
-    }).catch((error) => {
-        console.error(error);
-    })
+              <div class="member-info">
+                <h4>${name}</h4>
+                <span>${designation}</span>
+              </div>
+            </div>
+          </div>
+    `;
+    }
 }
-get_employees();
+
+const myFetch = async (_url) => {
+    fetching();
+    const result = await fetch(_url).then(response => { return response.json() });
+    put_employee_data(result);
+}
+
+myFetch("https://ars-hd.loca.lt/api/employees/");
+
